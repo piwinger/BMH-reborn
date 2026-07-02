@@ -6,7 +6,17 @@ namespace BMH.Core.Services;
 
 public sealed class PlayerFactory
 {
-    private readonly Random _random = new();
+    private readonly Random _random;
+
+    public PlayerFactory()
+        : this(new Random())
+    {
+    }
+
+    public PlayerFactory(Random random)
+    {
+        _random = random;
+    }
 
     public Player Create(
         string firstName,

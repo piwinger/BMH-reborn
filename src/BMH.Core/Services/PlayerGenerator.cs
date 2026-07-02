@@ -7,6 +7,11 @@ public sealed class PlayerGenerator
 {
     private readonly PlayerFactory _factory;
 
+    public PlayerGenerator()
+        : this(new PlayerFactory())
+    {
+    }
+
     public PlayerGenerator(PlayerFactory factory)
     {
         _factory = factory;
