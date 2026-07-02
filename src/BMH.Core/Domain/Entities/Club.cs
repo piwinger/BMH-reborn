@@ -2,17 +2,21 @@ namespace BMH.Core.Domain.Entities;
 
 public sealed class Club
 {
+    private readonly List<Player> _players = new();
+
     public Guid Id { get; } = Guid.NewGuid();
 
-    public string Name { get; private set; }
+    public string Name { get; }
 
-    public string ShortName { get; private set; }
+    public string ShortName { get; }
 
-    public string City { get; private set; }
+    public string City { get; }
 
     public decimal Budget { get; private set; }
 
-    public int Reputation { get; private set; }
+    public int Reputation { get; }
+
+    public IReadOnlyList<Player> Players => _players;
 
     public Club(
         string name,
@@ -28,6 +32,22 @@ public sealed class Club
         Reputation = reputation;
     }
 
-    public override string ToString()
-        => $"{Name} ({City})";
+    public void AddPlayer(Player player)
+    {
+        _players.Add(player);
+    }
+
+    public decimal Spend(decimal amount)
+    {
+        if (amount > Budget)
+            throw new InvalidOperationException("Budget überschritten.");
+
+        Budget -= amount;
+        return Budget;
+    }
+
+    public void Earn(decimal amount)
+    {
+        Budget += amount;
+    }
 }
