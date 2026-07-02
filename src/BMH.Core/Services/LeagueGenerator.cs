@@ -6,7 +6,7 @@ public sealed class LeagueGenerator
 {
     public League CreateBundesliga()
     {
-        var league = new League("Bundesliga", 1994);
+        var league = new League("Bundesliga");
 
         league.AddClub(new Club("Bayern München", "FCB", "München", 55_000_000m, 95));
         league.AddClub(new Club("Borussia Dortmund", "BVB", "Dortmund", 42_000_000m, 90));

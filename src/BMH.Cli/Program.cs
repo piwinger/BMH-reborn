@@ -1,13 +1,11 @@
 ﻿using BMH.Core.Services;
 
-var generator = new LeagueGenerator();
+var league = new LeagueGenerator().CreateBundesliga();
 
-var league = generator.CreateBundesliga();
+new FixtureGenerator().Generate(league);
 
-Console.WriteLine(league.Name);
-Console.WriteLine();
-
-foreach (var club in league.Clubs)
+foreach (var fixture in league.Season.Fixtures
+                                .Where(f => f.MatchDay == 1))
 {
-    Console.WriteLine($"{club.Name} ({club.City})");
+    Console.WriteLine(fixture);
 }

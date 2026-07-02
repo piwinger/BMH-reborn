@@ -6,14 +6,14 @@ public sealed class League
 
     public string Name { get; }
 
-    public int Season { get; }
+    public Season Season { get; }
 
     public IReadOnlyList<Club> Clubs => _clubs;
 
-    public League(string name, int season)
+    public League(string name)
     {
         Name = name;
-        Season = season;
+        Season = new Season();
     }
 
     public void AddClub(Club club)

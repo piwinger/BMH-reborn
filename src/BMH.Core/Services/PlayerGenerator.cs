@@ -5,14 +5,19 @@ namespace BMH.Core.Services;
 
 public sealed class PlayerGenerator
 {
-    private readonly PlayerFactory _factory = new();
+    private readonly PlayerFactory _factory;
+
+    public PlayerGenerator(PlayerFactory factory)
+    {
+        _factory = factory;
+    }
 
     public void GenerateSquad(Club club)
     {
-        AddPlayers(club, Position.Goalkeeper,2);
-        AddPlayers(club, Position.Defender,7);
-        AddPlayers(club, Position.Midfielder,7);
-        AddPlayers(club, Position.Striker,4);
+        AddPlayers(club, Position.Goalkeeper, 2);
+        AddPlayers(club, Position.Defender, 7);
+        AddPlayers(club, Position.Midfielder, 7);
+        AddPlayers(club, Position.Striker, 4);
     }
 
     private void AddPlayers(
@@ -20,12 +25,12 @@ public sealed class PlayerGenerator
         Position position,
         int amount)
     {
-        for(int i=0;i<amount;i++)
+        for (int i = 0; i < amount; i++)
         {
             club.AddPlayer(
                 _factory.Create(
                     "Player",
-                    $"{position}_{i+1}",
+                    $"{position}_{i + 1}",
                     position,
                     club.Reputation));
         }

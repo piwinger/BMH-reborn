@@ -21,6 +21,8 @@ public sealed class Player
 
     public int Fitness { get; private set; } = 100;
 
+    public bool IsInjured => Fitness < 100;
+
     public int Morale { get; private set; } = 100;
 
     public decimal Salary { get; private set; }
@@ -46,4 +48,6 @@ public sealed class Player
     public string FullName => $"{FirstName} {LastName}";
 
     public int Overall => Attributes.Overall;
+
+    public override string ToString() => $"{FullName} ({Overall})";
 }
