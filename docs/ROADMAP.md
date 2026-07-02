@@ -6,10 +6,10 @@
 - [x] Domain
 - [x] League
 - [x] Player
-- [ ] Fixture Generator
-- [ ] Match Engine
-- [ ] League Table
-- [ ] Season Simulator
+- [x] Fixture Generator
+- [x] Match Engine
+- [x] League Table
+- [x] Season Simulator
 
 ---
 

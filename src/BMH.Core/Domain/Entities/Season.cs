@@ -8,6 +8,21 @@ public sealed class Season
 
     public int CurrentMatchDay { get; private set; } = 1;
 
+    private readonly List<MatchResult> _results = new();
+
+    public IReadOnlyList<MatchResult> Results => _results;
+
+    public void AddResult(MatchResult result)
+    {
+        if (!_fixtures.Contains(result.Fixture))
+            throw new InvalidOperationException("Fixture is not part of this season.");
+
+        if (_results.Any(r => r.Fixture == result.Fixture))
+            throw new InvalidOperationException("Fixture already has a result.");
+
+        _results.Add(result);
+    }
+
     public void AddFixture(Fixture fixture)
     {
         _fixtures.Add(fixture);
