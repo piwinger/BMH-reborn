@@ -18,6 +18,10 @@ public sealed class Club
 
     public IReadOnlyList<Player> Players => _players;
 
+    public IReadOnlyList<Player> Squad => _players;
+
+    public Lineup? CurrentLineup { get; private set; }
+
     public Club(
         string name,
         string shortName,
@@ -49,5 +53,10 @@ public sealed class Club
     public void Earn(decimal amount)
     {
         Budget += amount;
+    }
+
+    public void SetLineup(Lineup lineup)
+    {
+        CurrentLineup = lineup;
     }
 }
