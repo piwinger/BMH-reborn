@@ -15,8 +15,8 @@
 
 ## Milestone 2 – Database
 
-- [ ] JSON Loader
-- [ ] Club Loader
+- [x] JSON Loader
+- [x] Club Loader
 - [ ] Name Provider
 - [ ] Savegames
 

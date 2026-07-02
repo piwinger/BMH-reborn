@@ -1,6 +1,8 @@
-﻿using BMH.Core.Services;
+using BMH.Core.Services;
 
-var league = new LeagueGenerator().CreateBundesliga();
+var clubsPath = FindDatabaseFile("bundesliga1994", "clubs.json");
+var clubs = new ClubJsonLoader().Load(clubsPath);
+var league = new LeagueGenerator().CreateBundesliga(clubs);
 
 new FixtureGenerator().Generate(league);
 
@@ -23,4 +25,27 @@ for (int i = 0; i < table.Count; i++)
 
     Console.WriteLine(
         $"{i + 1,2}. {team.Club.Name,-30} {team.MatchesPlayed,2} {team.Wins,2} {team.Draws,2} {team.Losses,2} {team.GoalsFor,3}:{team.GoalsAgainst,-3} {team.GoalDifference,4} {team.Points,3} Pkt.{note}");
+}
+
+static string FindDatabaseFile(string databaseName, string fileName)
+{
+    var directory = new DirectoryInfo(Environment.CurrentDirectory);
+
+    while (directory is not null)
+    {
+        var path = Path.Combine(
+            directory.FullName,
+            "assets",
+            "databases",
+            databaseName,
+            fileName);
+
+        if (File.Exists(path))
+            return path;
+
+        directory = directory.Parent;
+    }
+
+    throw new FileNotFoundException(
+        $"Could not find database file '{fileName}' for '{databaseName}'.");
 }

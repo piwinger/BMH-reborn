@@ -12,5 +12,117 @@
     "city": "Dortmund",
     "budget": 42000000,
     "reputation": 90
+  },
+  {
+    "name": "Werder Bremen",
+    "shortName": "SVW",
+    "city": "Bremen",
+    "budget": 31000000,
+    "reputation": 86
+  },
+  {
+    "name": "Hamburger SV",
+    "shortName": "HSV",
+    "city": "Hamburg",
+    "budget": 29000000,
+    "reputation": 84
+  },
+  {
+    "name": "Eintracht Frankfurt",
+    "shortName": "SGE",
+    "city": "Frankfurt",
+    "budget": 26000000,
+    "reputation": 82
+  },
+  {
+    "name": "1. FC Kaiserslautern",
+    "shortName": "FCK",
+    "city": "Kaiserslautern",
+    "budget": 24000000,
+    "reputation": 80
+  },
+  {
+    "name": "VfB Stuttgart",
+    "shortName": "VFB",
+    "city": "Stuttgart",
+    "budget": 28000000,
+    "reputation": 83
+  },
+  {
+    "name": "Borussia Mönchengladbach",
+    "shortName": "BMG",
+    "city": "Mönchengladbach",
+    "budget": 23000000,
+    "reputation": 79
+  },
+  {
+    "name": "Karlsruher SC",
+    "shortName": "KSC",
+    "city": "Karlsruhe",
+    "budget": 18000000,
+    "reputation": 74
+  },
+  {
+    "name": "Bayer Leverkusen",
+    "shortName": "B04",
+    "city": "Leverkusen",
+    "budget": 34000000,
+    "reputation": 87
+  },
+  {
+    "name": "Dynamo Dresden",
+    "shortName": "DYN",
+    "city": "Dresden",
+    "budget": 15000000,
+    "reputation": 70
+  },
+  {
+    "name": "SC Freiburg",
+    "shortName": "SCF",
+    "city": "Freiburg",
+    "budget": 14000000,
+    "reputation": 69
+  },
+  {
+    "name": "TSV 1860 München",
+    "shortName": "1860",
+    "city": "München",
+    "budget": 16000000,
+    "reputation": 71
+  },
+  {
+    "name": "MSV Duisburg",
+    "shortName": "MSV",
+    "city": "Duisburg",
+    "budget": 15000000,
+    "reputation": 70
+  },
+  {
+    "name": "1. FC Köln",
+    "shortName": "KOE",
+    "city": "Köln",
+    "budget": 20000000,
+    "reputation": 76
+  },
+  {
+    "name": "FC St. Pauli",
+    "shortName": "STP",
+    "city": "Hamburg",
+    "budget": 12000000,
+    "reputation": 66
+  },
+  {
+    "name": "VfL Bochum",
+    "shortName": "BOC",
+    "city": "Bochum",
+    "budget": 14000000,
+    "reputation": 68
+  },
+  {
+    "name": "KFC Uerdingen",
+    "shortName": "KFC",
+    "city": "Krefeld",
+    "budget": 13000000,
+    "reputation": 67
   }
 ]
