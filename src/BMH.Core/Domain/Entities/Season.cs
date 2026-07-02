@@ -8,6 +8,13 @@ public sealed class Season
 
     public int CurrentMatchDay { get; private set; } = 1;
 
+    public int LastMatchDay => _fixtures.Count == 0
+        ? 0
+        : _fixtures.Max(f => f.MatchDay);
+
+    public bool IsCompleted => LastMatchDay > 0 &&
+        _results.Count == _fixtures.Count;
+
     private readonly List<MatchResult> _results = new();
 
     public IReadOnlyList<MatchResult> Results => _results;
@@ -37,6 +44,7 @@ public sealed class Season
 
     public void NextMatchDay()
     {
-        CurrentMatchDay++;
+        if (CurrentMatchDay <= LastMatchDay)
+            CurrentMatchDay++;
     }
 }

@@ -27,4 +27,30 @@ public class SeasonSimulatorTests
 
         Assert.Throws<InvalidOperationException>(() => simulator.PlayMatchDay(league, 1));
     }
+
+    [Fact]
+    public void PlayRemainingSeason_Should_Play_All_Fixtures()
+    {
+        var league = new LeagueGenerator().CreateBundesliga();
+        new FixtureGenerator().Generate(league);
+
+        new SeasonSimulator().PlayRemainingSeason(league);
+
+        Assert.True(league.Season.IsCompleted);
+        Assert.Equal(306, league.Season.Results.Count);
+        Assert.Equal(35, league.Season.CurrentMatchDay);
+    }
+
+    [Fact]
+    public void PlayRemainingSeason_Should_Result_In_34_Matches_Per_Club()
+    {
+        var league = new LeagueGenerator().CreateBundesliga();
+        new FixtureGenerator().Generate(league);
+
+        new SeasonSimulator().PlayRemainingSeason(league);
+
+        var table = new TableCalculator().Calculate(league);
+
+        Assert.All(table, entry => Assert.Equal(34, entry.MatchesPlayed));
+    }
 }

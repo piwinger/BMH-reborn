@@ -4,7 +4,25 @@ namespace BMH.Core.Services;
 
 public sealed class SeasonSimulator
 {
-    private readonly MatchSimulator _simulator = new();
+    private readonly MatchSimulator _simulator;
+
+    public SeasonSimulator()
+        : this(new MatchSimulator())
+    {
+    }
+
+    public SeasonSimulator(MatchSimulator simulator)
+    {
+        _simulator = simulator;
+    }
+
+    public void PlayRemainingSeason(League league)
+    {
+        while (!league.Season.IsCompleted)
+        {
+            PlayCurrentMatchDay(league);
+        }
+    }
 
     public void PlayCurrentMatchDay(League league)
     {
