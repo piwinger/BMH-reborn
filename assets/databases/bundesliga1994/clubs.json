@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Bayern München",
+    "shortName": "FCB",
+    "city": "München",
+    "budget": 55000000,
+    "reputation": 95
+  },
+  {
+    "name": "Borussia Dortmund",
+    "shortName": "BVB",
+    "city": "Dortmund",
+    "budget": 42000000,
+    "reputation": 90
+  }
+]
