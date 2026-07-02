@@ -26,12 +26,12 @@ public class FixtureGeneratorTests
         {
             Assert.Equal(
                 9,
-                league.Season.Fixtures.Count(f => f.MatchDay == day));
+                league.Season.GetMatchDay(day).Count);
         }
     }
 
     [Fact]
-    public void Every_Club_Should_Play_34_Matches()
+    public void Every_Club_Should_Play_Exactly_34_Matches()
     {
         var league = new LeagueGenerator().CreateBundesliga();
 
@@ -44,6 +44,28 @@ public class FixtureGeneratorTests
                 f.AwayClub == club);
 
             Assert.Equal(34, matches);
+        }
+    }
+
+    [Fact]
+    public void No_Club_Should_Play_Twice_On_Same_Matchday()
+    {
+        var league = new LeagueGenerator().CreateBundesliga();
+
+        new FixtureGenerator().Generate(league);
+
+        for (int day = 1; day <= 34; day++)
+        {
+            var fixtures = league.Season.GetMatchDay(day);
+
+            foreach (var club in league.Clubs)
+            {
+                int appearances = fixtures.Count(f =>
+                    f.HomeClub == club ||
+                    f.AwayClub == club);
+
+                Assert.True(appearances <= 1);
+            }
         }
     }
 
