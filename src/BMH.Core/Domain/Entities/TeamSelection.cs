@@ -11,5 +11,9 @@ public sealed class TeamSelection
 
     public IReadOnlyList<Player> Bench => _bench;
 
-    ...
+    public TeamSelection(Formation formation)
+    {
+        Formation = formation;
+    }
+
 }

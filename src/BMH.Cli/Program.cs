@@ -11,6 +11,17 @@ var league = new LeagueGenerator(playerGenerator).CreateBundesliga(clubs);
 
 new FixtureGenerator().Generate(league);
 
+var career = new CareerFactory()
+    .Create(
+        "Stefan",
+        league,
+        league.Clubs.First());
+
+Console.WriteLine($"Manager: {career.Manager.Name}");
+Console.WriteLine($"Verein : {career.Manager.Club.Name}");
+Console.WriteLine($"Liga   : {career.World.Leagues.Single().Name}");
+Console.WriteLine($"Spieltag: {career.Clock.MatchDay}");
+
 new SeasonSimulator().PlayRemainingSeason(league);
 
 var table = new TableCalculator().Calculate(league);
