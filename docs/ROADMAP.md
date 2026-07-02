@@ -17,7 +17,7 @@
 
 - [x] JSON Loader
 - [x] Club Loader
-- [ ] Name Provider
+- [x] Name Provider
 - [ ] Savegames
 
 ---

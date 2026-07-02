@@ -1,8 +1,13 @@
 using BMH.Core.Services;
 
 var clubsPath = FindDatabaseFile("bundesliga1994", "clubs.json");
+var firstNamesPath = FindDatabaseFile("bundesliga1994", "firstnames_de.txt");
+var lastNamesPath = FindDatabaseFile("bundesliga1994", "lastnames_de.txt");
+
 var clubs = new ClubJsonLoader().Load(clubsPath);
-var league = new LeagueGenerator().CreateBundesliga(clubs);
+var nameProvider = RandomNameProvider.Load(firstNamesPath, lastNamesPath);
+var playerGenerator = new PlayerGenerator(new PlayerFactory(), nameProvider);
+var league = new LeagueGenerator(playerGenerator).CreateBundesliga(clubs);
 
 new FixtureGenerator().Generate(league);
 
