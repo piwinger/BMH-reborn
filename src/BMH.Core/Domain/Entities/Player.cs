@@ -50,4 +50,13 @@ public sealed class Player
     public int Overall => Attributes.Overall;
 
     public override string ToString() => $"{FullName} ({Overall})";
+    public void ImproveFitness(int amount)
+    {
+        Fitness = Math.Min(100, Fitness + amount);
+    }
+
+    public void ReduceFitness(int amount)
+    {
+        Fitness = Math.Max(0, Fitness - amount);
+    }
 }

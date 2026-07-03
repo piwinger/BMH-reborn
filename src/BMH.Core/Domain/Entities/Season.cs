@@ -47,4 +47,10 @@ public sealed class Season
         if (CurrentMatchDay <= LastMatchDay)
             CurrentMatchDay++;
     }
+
+    public void Advance()
+    {
+        if (!IsCompleted)
+            CurrentMatchDay++;
+    }
 }

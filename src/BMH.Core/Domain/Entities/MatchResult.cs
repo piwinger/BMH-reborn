@@ -17,4 +17,10 @@ public sealed class MatchResult
     public int HomeGoals { get; }
 
     public int AwayGoals { get; }
+
+    public bool HomeWin => HomeGoals > AwayGoals;
+
+    public bool AwayWin => AwayGoals > HomeGoals;
+
+    public bool Draw => HomeGoals == AwayGoals;
 }

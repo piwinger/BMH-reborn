@@ -1,3 +1,5 @@
+using BMH.Core.Domain.ValueObjects;
+
 namespace BMH.Core.Domain.Entities;
 
 public sealed class Club
@@ -12,15 +14,11 @@ public sealed class Club
 
     public string City { get; }
 
-    public decimal Budget { get; private set; }
-
     public int Reputation { get; }
 
     public IReadOnlyList<Player> Players => _players;
 
-    public IReadOnlyList<Player> Squad => _players;
-
-    public Lineup? CurrentLineup { get; private set; }
+    public TeamSelection? CurrentLineup { get; private set; }
 
     public decimal Balance { get; private set; }
 
@@ -34,7 +32,7 @@ public sealed class Club
         string name,
         string shortName,
         string city,
-        decimal budget,
+        decimal balance,
         int reputation,
         string stadiumName = "Stadion",
         int stadiumCapacity = 50000,
@@ -43,7 +41,7 @@ public sealed class Club
         Name = name;
         ShortName = shortName;
         City = city;
-        Budget = budget;
+        Balance = balance;
         Reputation = reputation;
         StadiumName = stadiumName;
         StadiumCapacity = stadiumCapacity;
@@ -57,19 +55,19 @@ public sealed class Club
 
     public decimal Spend(decimal amount)
     {
-        if (amount > Budget)
-            throw new InvalidOperationException("Budget überschritten.");
+        if (amount > Balance)
+            throw new InvalidOperationException("Balance überschritten.");
 
-        Budget -= amount;
-        return Budget;
+        Balance -= amount;
+        return Balance;
     }
 
     public void Earn(decimal amount)
     {
-        Budget += amount;
+        Balance += amount;
     }
 
-    public void SetLineup(Lineup lineup)
+    public void SetLineup(TeamSelection lineup)
     {
         CurrentLineup = lineup;
     }
