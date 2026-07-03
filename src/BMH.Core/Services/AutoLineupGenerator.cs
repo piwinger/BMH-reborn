@@ -25,7 +25,7 @@ public sealed class AutoLineupGenerator
     {
         var players = club.Players
             .Where(p => p.Position == position)
-            .OrderByDescending(p => p.Overall)
+            .OrderByDescending(p => p.GetRatingFor(position))
             .Take(amount);
 
         foreach (var player in players)

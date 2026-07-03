@@ -59,4 +59,14 @@ public sealed class Player
     {
         Fitness = Math.Max(0, Fitness - amount);
     }
+
+    public int GetRatingFor(Position position)
+    {
+        if (Position == position)
+            return Overall;
+
+        // Erste Version.
+        // Später ersetzen wir den Malus durch Attributgewichtungen.
+        return (int)Math.Round(Overall * 0.65);
+    }
 }
